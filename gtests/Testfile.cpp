@@ -21,9 +21,9 @@ TEST(Banking, Transaction1) {
   Account base1(3, 1500);
   Account base2(4, 1500);
   
-  Debit(base1, 400); //Simulating a non-fee transaction without Make func
-  Credit(base2, 400);
-  SaveToDataBase(base1, base2, 400);  
+  ASSERT_EQ(Debit(base1, 400), true); //Simulating a non-fee transaction without Make func
+  ASSERT_EQ(Credit(base2, 400), true);
+  Transaction::SaveToDataBase(base1, base2, 400);  
 }
 
 TEST(Banking, Transaction2) {
