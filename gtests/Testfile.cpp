@@ -20,10 +20,12 @@ ASSERT_THROW(acc.ChangeBalance(1234), std::runtime_error); //Checking if it's ri
 TEST(Banking, Transaction1) {
   Account base1(3, 1500);
   Account base2(4, 1500);
-  
-  ASSERT_EQ(Debit(base1, 400), true); //Simulating a non-fee transaction without Make func
-  ASSERT_EQ(Credit(base2, 400), true);
-  Transaction::SaveToDataBase(base1, base2, 400);  
+  Transaction tr;
+  ASSERT_EQ(tr.Debit(base1, 400), true); //Simulating a non-fee transaction without Make func
+  ASSERT_EQ(tr.Credit(base2, 400), true);
+  tr.SaveToDataBase(base1, base2, 400);  
+  ASSERT_EQ(base1.GetBalance(), 1100);
+  ASSERT_EQ(base2.GetBalance(), 1900);
 }
 
 TEST(Banking, Transaction2) {
