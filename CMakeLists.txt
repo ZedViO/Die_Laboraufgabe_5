@@ -18,5 +18,5 @@ if (COVERAGE)  #Покроем нашу лабу любовью и забото�
     target_link_libraries(run_test PRIVATE --coverage)
 endif()
 
-target_link_libraries(run_test PUBLIC banking_lib gtest) #А не рванет? -Не должно
+target_link_libraries(run_test PUBLIC banking_lib gtest_main) #А не рванет? -Не должно
 
