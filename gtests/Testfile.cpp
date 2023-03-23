@@ -17,8 +17,16 @@ ASSERT_EQ(acc.GetBalance(), -1); //How could it be...?
 acc.Unlock(); //Dobby is free
 ASSERT_THROW(acc.ChangeBalance(1234), std::runtime_error); //Checking if it's right
 }
+TEST(Banking, Transaction1) {
+  Account base1(3, 1500);
+  Account base2(4, 1500);
+  
+  Debit(base1, 400); //Simulating a non-fee transaction without Make func
+  Credit(base2, 400);
+  SaveToDataBase(base1, base2, 400);  
+}
 
-TEST(Banking, Transaction) {
+TEST(Banking, Transaction2) {
 Account acc1(1, 1500);
 Account acc2(2, 1500);
 Transaction transaction;
