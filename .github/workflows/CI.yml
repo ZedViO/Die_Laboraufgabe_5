@@ -26,7 +26,7 @@ jobs:
   - name: Run test
     run: ${{github.workspace}}/build/run_test
     
-  - name: Do lcov stuff
+  - name: Make Coverage Process
     run: |
       cd ${{github.workspace}}/build
       lcov -t "Testfile Coverage" -o Testfile.info -c -d .  
@@ -35,3 +35,6 @@ jobs:
     uses: coverallsapp/github-action@v1.1.2
     with:
       github-token: ${{ secrets.GITHUB_TOKEN }}
+      parallel: true
+      path-to-lcov: ${{github.workspace}}/build/Testfile.info
+      coveralls-endpoint: https://coveralls.io
