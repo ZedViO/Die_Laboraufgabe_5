@@ -19,5 +19,5 @@ target_include_directories(run_test PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/banking) 
 target_compile_options(run_test PRIVATE --coverage)
 target_link_libraries(run_test PRIVATE --coverage)
 
-target_link_libraries(run_test PUBLIC banking_lib gtest) #А не рванет? -Не должно
+target_link_libraries(run_test PUBLIC banking_lib gtest_main) #А не рванет? -Не должно
 
