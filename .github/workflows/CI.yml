@@ -32,9 +32,15 @@ jobs:
       lcov -t "Testfile Coverage" -o Testfile.info -c -d .  
 
   - name: Publish to coveralls.io
-    uses: coverallsapp/github-action@v1.1.2
+    uses: coverallsapp/github-action@master
     with:
       github-token: ${{ secrets.GITHUB_TOKEN }}
       parallel: true
       path-to-lcov: ${{github.workspace}}/build/Testfile.info
       coveralls-endpoint: https://coveralls.io
+      
+  - name: End coveralls
+    uses: coverallsapp/github-action@master
+    with:
+      github-token: ${{ secrets.github_token }}
+      parallel-finished: true
