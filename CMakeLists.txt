@@ -1,6 +1,4 @@
 cmake_minimum_required(VERSION 3.22.1 FATAL_ERROR)
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD ON)
 
 set(COVERAGE OFF CACHE BOOL "Coverage")
 
