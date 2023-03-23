@@ -8,19 +8,19 @@ Account acc(0, 0); //Account creation
 
 ASSERT_EQ(acc.GetBalance(), 0); //Checking the constructor
 ASSERT_THROW(acc.ChangeBalance(1234), std::runtime_error); //Checking if unlocked
-acc.lock(); //Let's lock it...
+acc.Lock(); //Let's lock it...
 ASSERT_NO_THROW(acc.ChangeBalance(1234)); //Checking if locked
-ASSERT_THROW(acc.lock(), std::runtime_error); //Sure that we cannot lock this dude twice
+ASSERT_THROW(acc.Lock(), std::runtime_error); //Sure that we cannot lock this dude twice
 ASSERT_EQ(acc.GetBalance(), 1234); //Checking the balance after we have change it
-acc.ChangeBalance(-1235) //Let's do some %bad_words%
-ASSERT_EQ(acc.GetBalance(), -1) //How could it be...?
-acc.unlock(); //Dobby is free
+acc.ChangeBalance(-1235); //Let's do some %bad_words%
+ASSERT_EQ(acc.GetBalance(), -1); //How could it be...?
+acc.Unlock(); //Dobby is free
 ASSERT_THROW(acc.ChangeBalance(1234), std::runtime_error); //Checking if it's right
 }
 
 TEST(Banking, Transaction) {
-Account acc1(1, 1500)
-Account acc2(2, 1500)
+Account acc1(1, 1500);
+Account acc2(2, 1500);
 Transaction transaction;
 
 ASSERT_EQ(transaction.fee(), 1); //Checking the constructor
