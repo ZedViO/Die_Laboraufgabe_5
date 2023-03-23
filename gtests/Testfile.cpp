@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 
 //THIS FILE TESTS BOTH ACCOUNT.CPP AND TRANSACTION.CPP FILES
-TEST(Account, Banking)
+TEST(Banking, Account) {
 Account acc(0, 0); //Account creation
 
 ASSERT_EQ(acc.GetBalance(), 0); //Checking the constructor
@@ -16,8 +16,9 @@ acc.ChangeBalance(-1235) //Let's do some %bad_words%
 ASSERT_EQ(acc.GetBalance(), -1) //How could it be...?
 acc.unlock(); //Dobby is free
 ASSERT_THROW(acc.ChangeBalance(1234), std::runtime_error); //Checking if it's right
+}
 
-TEST(Transaction, Banking)
+TEST(Banking, Transaction) {
 Account acc1(1, 1500)
 Account acc2(2, 1500)
 Transaction transaction;
@@ -36,5 +37,5 @@ ASSERT_EQ(transaction.Make(acc1, acc2, 2000), false); //Wow wow, it's too big, t
 ASSERT_EQ(transaction.Make(acc1, acc2, 1000), true); //Finally, a transaction!
 ASSERT_EQ(acc2.GetBalance(), 2500);	//Too rich
 ASSERT_EQ(acc1.GetBalance(), 400); //LMAO too poor
-
+}
 
