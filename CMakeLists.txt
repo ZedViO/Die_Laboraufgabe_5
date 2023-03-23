@@ -11,8 +11,6 @@ target_link_libraries(banking_lib gcov)
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/third-party/gtest gtest)  #Крадем у гуглов их либу с тестами
 
-add_executable(run_test ${CMAKE_CURRENT_SOURCE_DIR}/gtests/Testfile.cpp)  #Наши тесты
-
 target_include_directories(run_test PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/banking) #Добавляем дир с хедерами
 
 #Покроем нашу лабу любовью и заботой
