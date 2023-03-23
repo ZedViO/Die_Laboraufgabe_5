@@ -4,7 +4,10 @@ set(COVERAGE OFF CACHE BOOL "Coverage")
 
 project(banking)
 
-add_library(banking_lib STATIC  ${CMAKE_CURRENT_SOURCE_DIR}/banking/Transaction.cpp ${CMAKE_CURRENT_SOURCE_DIR}/banking/Account.cpp)     #Собираем банкинг
+add_library(banking_lib STATIC  ${CMAKE_CURRENT_SOURCE_DIR}/banking/Transaction.cpp 
+                                ${CMAKE_CURRENT_SOURCE_DIR}/banking/Account.cpp
+                                ${CMAKE_CURRENT_SOURCE_DIR}/banking/Transaction.h 
+                                ${CMAKE_CURRENT_SOURCE_DIR}/banking/Account.h)     #Собираем банкинг
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/third-party/gtest gtest)  #Крадем у гуглов их либу с тестами
 
@@ -15,5 +18,5 @@ if (COVERAGE)  #Покроем нашу лабу любовью и забото�
     target_link_libraries(run_test PRIVATE --coverage)
 endif()
 
-target_link_libraries(run_test banking_lib gtest) #А не рванет? -Не должно
+target_link_libraries(run_test PUBLIC banking_lib gtest) #А не рванет? -Не должно
 
