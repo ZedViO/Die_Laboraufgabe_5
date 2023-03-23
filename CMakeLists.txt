@@ -5,9 +5,9 @@ set(COVERAGE OFF CACHE BOOL "Coverage")
 project(banking)
 
 add_library(banking_lib STATIC  ${CMAKE_CURRENT_SOURCE_DIR}/banking/Transaction.cpp 
-                                ${CMAKE_CURRENT_SOURCE_DIR}/banking/Account.cpp
-                                ${CMAKE_CURRENT_SOURCE_DIR}/banking/Transaction.h 
-                                ${CMAKE_CURRENT_SOURCE_DIR}/banking/Account.h)     #Собираем банкинг
+                                ${CMAKE_CURRENT_SOURCE_DIR}/banking/Account.cpp   #Собираем банкинг
+                                
+target_include_directories(banking_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/banking) #Добавляем дир с хедерами
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/third-party/gtest gtest)  #Крадем у гуглов их либу с тестами
 
