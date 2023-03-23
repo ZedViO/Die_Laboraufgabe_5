@@ -7,7 +7,6 @@ project(banking)
 add_library(banking_lib STATIC  ${CMAKE_CURRENT_SOURCE_DIR}/banking/Transaction.cpp 
                                 ${CMAKE_CURRENT_SOURCE_DIR}/banking/Account.cpp)  #Собираем банкинг
 
-target_link_libraries(banking_lib gcov)
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/third-party/gtest gtest)  #Крадем у гуглов их либу с тестами
 
