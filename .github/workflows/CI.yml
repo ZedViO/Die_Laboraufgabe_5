@@ -28,8 +28,7 @@ jobs:
     
   - name: Do lcov stuff
     run: |
-      cd ${{github.workspace}}/gtests
-      g++ --coverage Testfile.cpp -o testfile
+      cd ${{github.workspace}}/build
       lcov -t "Testfile Coverage" -o Testfile.info -c -d .  
 
   - name: Publish to coveralls.io
